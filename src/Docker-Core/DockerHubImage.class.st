@@ -14,6 +14,12 @@ Class {
 	#category : #'Docker-Core-Base'
 }
 
+{ #category : #querying }
+DockerHubImage class >> fromHubName: aString [
+
+	^(Docker searchDockerHubFor: aString) detect: [:each | each name = aString ] ifNone: nil 
+]
+
 { #category : #'instance creation' }
 DockerHubImage class >> name: aName description: aDescription [
 
