@@ -86,6 +86,12 @@ DockerHubImage >> printOn: aStream [
 	aStream nextPutAll: self name asString
 ]
 
+{ #category : #operating }
+DockerHubImage >> pull [
+
+	^Docker pullImage: self
+]
+
 { #category : #accessing }
 DockerHubImage >> starCount [
 	^ starCount

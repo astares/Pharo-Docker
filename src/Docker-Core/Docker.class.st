@@ -8,6 +8,14 @@ Class {
 }
 
 { #category : #accessing }
+Docker class >> localImageNamed: aString [
+
+	^self localImages 
+				detect: [:each | each repository = aString ]
+				ifNone: [ self wasNotAbleToFindImageNamed: aString ]
+]
+
+{ #category : #accessing }
 Docker class >> localImages [
 
 	|expression|
@@ -19,6 +27,24 @@ createdSince: ''{{.CreatedSince}}'';
 imageSize: ''{{.Size}}'';
 yourself."'), '}'.
 	^self evaluate: expression
+]
+
+{ #category : #operating }
+Docker class >> pull: aString [
+	"Pull a DockerHub image using the given DockerHub image name"
+
+	^(DockerHubImage fromHubName: aString) 
+			ifNil: [ self wasNotAbleToFindImageNamed: aString ] 
+			ifNotNil: [:image | 
+				image pull.  
+				self localImageNamed: aString ]
+
+]
+
+{ #category : #operating }
+Docker class >> pullImage: aDockerHubImage [
+
+	 ^LibC system: 'docker pull ', aDockerHubImage name
 ]
 
 { #category : #private }
@@ -53,4 +79,12 @@ Docker class >> searchDockerHubFor: searchString [
 Docker class >> version [
 
 	^LibC resultOfCommand: 'docker version'
+]
+
+{ #category : #'private - exception handling' }
+Docker class >> wasNotAbleToFindImageNamed: aString [ 
+	"Throw an error as were not able to find an image with the given name"
+	
+	^(DockerImageNotFoundException imageName: aString) signal 
+
 ]
