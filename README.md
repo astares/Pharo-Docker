@@ -95,3 +95,10 @@ There is an easier expression to pull and directly return the result:
 Docker pull: 'pharo/image'
 ```
  
+### Remove an image
+
+```Smalltalk
+Docker remove: 'pharo/image'
+```
+
+... to be continued
