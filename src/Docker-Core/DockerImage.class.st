@@ -30,6 +30,12 @@ DockerImage class >> id: aString repository: repository tag: tag [
 			yourself
 ]
 
+{ #category : #operating }
+DockerImage class >> remove [
+
+	 ^Docker remove: self
+]
+
 { #category : #accessing }
 DockerImage >> createdAt [
 	^ createdAt

@@ -47,6 +47,21 @@ Docker class >> pullImage: aDockerHubImage [
 	 ^LibC system: 'docker pull ', aDockerHubImage name
 ]
 
+{ #category : #operating }
+Docker class >> remove: aString [
+	"Pull a DockerHub image using the given DockerHub image name"
+
+	self removeImage: (self localImageNamed: aString)
+			
+
+]
+
+{ #category : #operating }
+Docker class >> removeImage: aDockerImage [
+	
+	^LibC system: 'docker rmi ', aDockerImage repository
+]
+
 { #category : #private }
 Docker class >> sanitizeString: aString [
 	"Works for now - find a better method later"
