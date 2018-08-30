@@ -11,3 +11,9 @@ DockerHubImage >> spotterPreviewDockerHubImageIn: aComposite [
 		
 	 
 ]
+
+{ #category : #'*Docker-Tools' }
+DockerHubImage class >> systemIcon [
+
+	 ^DockerIconCache dockerhubIcon 
+]

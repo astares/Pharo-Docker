@@ -3,6 +3,6 @@ A docker container
 "
 Class {
 	#name : #DockerContainer,
-	#superclass : #Object,
-	#category : #'Docker-Core-Base'
+	#superclass : #DockerItem,
+	#category : #'Docker-Core-Base-Model'
 }

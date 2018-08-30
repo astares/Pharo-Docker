@@ -81,9 +81,21 @@ DockerIconCache class >> iconCache [
 	^ IconCache ifNil: [ IconCache := Dictionary new ]
 ]
 
+{ #category : #icons }
+DockerIconCache class >> refreshIcon [
+
+	^TabMorph refreshIcon1 
+]
+
 { #category : #'private - initialization' }
 DockerIconCache class >> reset [
 	<script>
 	
 	IconCache := nil
+]
+
+{ #category : #icons }
+DockerIconCache class >> searchIcon [
+
+	^self iconNamed: #smallFind
 ]

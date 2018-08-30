@@ -3,7 +3,7 @@ I represent a docker image
 "
 Class {
 	#name : #DockerImage,
-	#superclass : #Object,
+	#superclass : #DockerItem,
 	#instVars : [
 		'id',
 		'repository',
@@ -13,7 +13,7 @@ Class {
 		'createdAt',
 		'imageSize'
 	],
-	#category : #'Docker-Core-Base'
+	#category : #'Docker-Core-Base-Model'
 }
 
 { #category : #'instance creation' }

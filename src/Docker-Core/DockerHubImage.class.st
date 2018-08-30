@@ -3,7 +3,7 @@ A DockerHub image
 "
 Class {
 	#name : #DockerHubImage,
-	#superclass : #Object,
+	#superclass : #DockerItem,
 	#instVars : [
 		'name',
 		'description',
@@ -11,7 +11,7 @@ Class {
 		'isOfficial',
 		'isAutomated'
 	],
-	#category : #'Docker-Core-Base'
+	#category : #'Docker-Core-Base-Model'
 }
 
 { #category : #querying }
