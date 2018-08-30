@@ -83,7 +83,7 @@ DockerGenericBrowser >> initializeStatusBar [
 { #category : #'private - initialization' }
 DockerGenericBrowser >> initializeTableModel [
 
-	tableModel := self instantiate: FastTableModel.
+	tableModel := self instantiate: FastTablePresenter.
 	tableModel 
  		items: SortedCollection new;
 		displayBlock: [ :case | case printString ];
@@ -121,7 +121,7 @@ DockerGenericBrowser >> mainMenu: anObject [
 { #category : #'private - actions' }
 DockerGenericBrowser >> refresh [
 
-	self tableModel items: Docker localImages
+
 ]
 
 { #category : #accessing }

@@ -36,7 +36,7 @@ DockerHubBrowser class >> open [
 { #category : #accessing }
 DockerHubBrowser class >> title [
 
-	^'DockerHub Browser'
+	^'DockerHub Browser (remote)'
 ]
 
 { #category : #'private - actions' }
@@ -63,7 +63,15 @@ DockerHubBrowser >> initializeMainMenu [
 	| builder |
 	mainMenu := MenuModel new.
 	builder := DockerMenuBuilder forMenu: mainMenu.
-	builder addItem: 'DockerHUb' icon: nil subMenu: self initalDockerHubMenu
+	builder addItem: 'DockerHub' icon: nil subMenu: self initalDockerHubMenu
+]
+
+{ #category : #'private - initialization' }
+DockerHubBrowser >> initializeTableModel [
+	super initializeTableModel.
+	tableModel filteringBlock: [:a | 
+		self haltOnce.
+		Docker searchDockerHubFor: 'ubuntu']
 ]
 
 { #category : #'private - initialization' }

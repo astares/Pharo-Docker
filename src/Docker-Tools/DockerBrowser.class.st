@@ -36,7 +36,7 @@ DockerBrowser class >> open [
 { #category : #accessing }
 DockerBrowser class >> title [
 
-	^'Docker Browser'
+	^'Docker Browser (local)'
 ]
 
 { #category : #'private - actions' }
@@ -46,6 +46,17 @@ DockerBrowser >> displayVersion [
 		entryText: Docker version;
 		open;
 		yourself
+]
+
+{ #category : #'private - menu initialization' }
+DockerBrowser >> initalDockerHubMenu [
+	|builder|
+	builder := DockerMenuBuilder new.
+	builder
+		addItem: 'DockerHub'
+		icon: self iconProvider dockerhubIcon
+		action: [ DockerHubBrowser open ].	 
+	^builder menu	
 ]
 
 { #category : #'private - menu initialization' }
@@ -70,8 +81,14 @@ DockerBrowser >> initalImageMenu [
 	builder
 		addItem: 'Search'
 		icon: self iconProvider searchIcon
-		action: [ self refresh ].	 
+		action: [ self search ].	 
 	^builder menu	
+]
+
+{ #category : #initialization }
+DockerBrowser >> initialExtent [
+
+	^370@460
 ]
 
 { #category : #'private - initialization' }
@@ -81,7 +98,8 @@ DockerBrowser >> initializeMainMenu [
 	mainMenu := MenuModel new.
 	builder := DockerMenuBuilder forMenu: mainMenu.
 	builder addItem: 'Docker' icon: nil subMenu: self initalDockerMenu.
-	builder addItem: 'Image' icon: nil subMenu: self initalImageMenu
+	builder addItem: 'Image' icon: nil subMenu: self initalImageMenu.
+	builder addItem: 'DockerHub' icon: nil subMenu: self initalDockerHubMenu	
 ]
 
 { #category : #'private - initialization' }
@@ -95,8 +113,23 @@ DockerBrowser >> initializeToolBar [
 					description: 'Refresh';
 					icon: (self iconProvider refreshIcon);
 					action: [ self refresh ] ].
+		 ];
+		addGroup: [ :group |			 
+			group addItem: [ :item |
+				item
+					name: nil;
+					description: 'DockerHub';
+					icon: (self iconProvider dockerhubIcon);
+					action: [ DockerHubBrowser open  ] ].
 		 ].
-	toolBar applyTo: self.
+	
+	toolBar applyTo: self. 
+]
+
+{ #category : #'private - actions' }
+DockerBrowser >> refresh [
+
+	self tableModel items: Docker localImages
 ]
 
 { #category : #'private - menu initialization' }
