@@ -1,5 +1,5 @@
 # Pharo-Docker
-Access to Docker from Pharo (scripting, Spotter, etc)
+Access to Docker from [Pharo](http://www.pharo.org) (scripting, Spotter, etc)
 
 # Overview
 
