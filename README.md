@@ -15,7 +15,7 @@ For Ubuntu use the following steps:
 sudo apt-get install docker.io
 ```
 
-Make sure you do not need to run 
+As we want to run the docker command without being sudo we need to add our current user to the docker group. This can be easily done using the following two lines:
 
 ```
 sudo groupadd docker
@@ -31,14 +31,14 @@ docker run hello-world
 ```
 ### Installation of Pharo
 
-It is easy to get access to Pharo using the [Pharo ZeroConf](http://get.pharo.org/)
+It is easy to download and run Pharo on your machine with the help of [Pharo ZeroConf](http://get.pharo.org/).
+Just run the following commands in a shell to install a Pharo 7 - 64 Bit image together with the virtual machine:
 
 ```
-mkdir pharo
-cd pharo
 wget -O- get.pharo.org/64/70+vm | bash
 ./pharo-ui Pharo.image ../load.st
 ```
+For all those new to Pharo: Pharo also has the concept of an *"image"* - which is a snapshot of the Pharo object memory and not the same as a "Docker image". The Pharo image is a portable file with an *.image extension usable on different operating systems like Linux, Mac, Windows, Raspbian/Pi or other.
 
 ## Usage
 
