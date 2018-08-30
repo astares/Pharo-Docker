@@ -43,6 +43,37 @@ MhC6MEHiRIsaDePKNRgQADs='
 	
 ]
 
+{ #category : #icons }
+DockerIconCache class >> dockerhubIcon [
+	"Private - Generated method"
+	^ self iconCache 
+			at: #dockerhubIcon
+			ifAbsentPut:[ Form fromBinaryStream: self dockerhubIconContents base64Decoded readStream ].
+]
+
+{ #category : #'private - icon contents' }
+DockerIconCache class >> dockerhubIconContents [
+
+	^'R0lGODlhEAAQAHcAACH5BAEAAEoALAAAAAAQABAAhwuZugidvgqevwyZuhGTrxadvhedvh2X
+uh+VuBuavh6Zvh6bvyCXtiCXuiOZvSWavy6TszeXrjiQpxqawBufwRyfyQml0wip2Qmq2g6s
+3BKt3hOu3xaq2Ruv3B+y5CChyimgwimkyymmziS03TykyTKo0jyz3SGz5SKz5ie26SS65CW9
+6Ci26Sm26Sm26im36iq36jK25jO56EmXrkyYr1WUo0WhtVimvGKfsmWgs2ekt0Sy1kmz116o
+wl2+3nWzxnywwoOtuYeuuJm1vZi0v4e5yJbE0ZHP4LbKz7PS2f///wAABAT2wAT2rFaGVAgb
+2QAABAT2wAAAAFaGYAT2DOGmtqtjzf///tttUdwNPwAAAEB/LAMPJgAAB2sG1AAAAAAAAAAA
+AAAAB0+qYAAABwAAAEB/LAAAAEB/LAMPJgAAB2sG1AAAAAAAAQAAAB2cwAT2PFvsVlvsXgAA
+AE+qYAT1xFwaIAAAAE+qYFvq8k+qYFufOgAAAIMC4gMPJgT0zNvP/2G7kAAAAACwKQAAAAAA
+AAT02NtiEOICMACwKQT1FNvQpNvQb3T7gQAAAAAAAAT1GFZXWFZZagEb2YUADwAAAAEb2QAA
+AAAAAQAAAFZ5qVZ5iwT1NAABACKWcEL8iAT1NAADAAAAALqZC76dCL+eCrqZDK+TEb6dFr6d
+F7qXHbiVH76aG76ZHr+bHraXILqXIL2ZI7+aJbOTLq6XN6eQOMCaGsGfG8mfHNOlCdmpCNqq
+CdysDt6tEt+uE9mqFtyvG+SyH8qhIMKgKcukKc6mKd20JMmkPNKoMt2zPOWzIeazIum2J+S6
+JOi9Jem2KOm2Keq2Keq3Keq3Kua2Mui5M66XSa+YTKOUVbWhRbymWLKfYrOgZbekZ9ayRNez
+ScKoXt6+XcazdcKwfLmtg7iuh721mb+0mMi5h9HEluDPkc/KttnSs////1Zx6Fa8bAgb2QAA
+AAABAAT2qAAAAlZ5qVZx6Fa8bAgb2QAAAAABAAT2yAAAAlZ5qVZ5iwT2xAh7AJUIHEiwoMGD
+CBMmDLJCoRIhNm5IKOCwxgAQDAIQLEGEoAAKIwAYUEEggkASFRoIzJHgQYgDDkQggACkxwcd
+An94gMGzJ4wXKTbMIMihxQsTMlq4aIEiw4KCNHb44BGDxQkNFxQcHJLkSAcMFibgUIjESBGH
+aNOqPRgQADs='
+]
+
 { #category : #'private - accessing' }
 DockerIconCache class >> iconCache [
 	<script: 'self iconCache inspect'>

@@ -7,7 +7,7 @@ GTSpotter >> spotterDockerHubImageFor: aStep [
 	^ aStep listProcessor
 		title: 'Dockerhub images' translated; 
 		itemName: [:each | each name ];
-		itemIcon: [:each | DockerIconCache dockerIcon ];
+		itemIcon: [:each | DockerIconCache dockerhubIcon ];
 		filter: GTNullFilter item: [ :filter :context | 
 			(Docker searchDockerHubFor: context textTrimmed) 
 					do: [:each | filter value: each ]];
