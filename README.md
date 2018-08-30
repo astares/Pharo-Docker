@@ -1,7 +1,14 @@
 # Pharo-Docker
-Access Docker from Pharo
+Access to Docker from Pharo (scripting, Spotter, etc)
 
-## Screenshot
+# Overview
+
+### Description
+
+With this project it is possible to drive Docker using Pharo language. Additionally it includes tools like
+the spotter browser extension to easily work with remote or local docker images directly from a Pharo image.
+
+### Screenshot
 
 ![](images/docker.png)
 
@@ -32,13 +39,32 @@ docker run hello-world
 ### Installation of Pharo
 
 It is easy to download and run Pharo on your machine with the help of [Pharo ZeroConf](http://get.pharo.org/).
-Just run the following commands in a shell to install a Pharo 7 - 64 Bit image together with the virtual machine:
+Just run the following commands in a shell to download a full Pharo 7 - 64 Bit image together with the virtual machine:
 
 ```
 wget -O- get.pharo.org/64/70+vm | bash
+```
+
+and run it
+
+```
 ./pharo-ui Pharo.image ../load.st
 ```
+
 For all those new to Pharo: Pharo also has the concept of an *"image"* - which is a snapshot of the Pharo object memory and not the same as a "Docker image". The Pharo image is a portable file with an *.image extension usable on different operating systems like Linux, Mac, Windows, Raspbian/Pi or other.
+
+### Installation of this project
+
+To install this project into Pharo evaluate the following expression in a Pharo playground. For this go to the Pharo world menu and select *Tools* -> *Playground* to open a playground workspace window. Paste the following expression there:
+
+```Smalltalk
+ Metacello new
+        baseline:'Docker';
+        repository: 'github://astares/Pharo-Docker:master/src';
+        load
+```
+
+and select *Do it* from the context menu of the playground to evaluate the loading expression.
 
 ## Usage
 
