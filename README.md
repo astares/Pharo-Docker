@@ -88,3 +88,10 @@ they will be added locally which you can check again using:
 ```Smalltalk
 Docker localImages 
 ```
+
+There is an easier expression to pull and directly return the result:
+
+```Smalltalk
+Docker pull: 'pharo/image'
+```
+ 
