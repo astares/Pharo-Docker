@@ -2,8 +2,8 @@
 A DockerHub image
 "
 Class {
-	#name : #DockerHubImage,
-	#superclass : #DockerItem,
+	#name : 'DockerHubImage',
+	#superclass : 'DockerItem',
 	#instVars : [
 		'name',
 		'description',
@@ -11,16 +11,18 @@ Class {
 		'isOfficial',
 		'isAutomated'
 	],
-	#category : #'Docker-Core-Base-Model'
+	#category : 'Docker-Core-Base-Model',
+	#package : 'Docker-Core',
+	#tag : 'Base-Model'
 }
 
-{ #category : #querying }
+{ #category : 'querying' }
 DockerHubImage class >> fromHubName: aString [
 
 	^(Docker searchDockerHubFor: aString) detect: [:each | each name = aString ] ifNone: nil 
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 DockerHubImage class >> name: aName description: aDescription [
 
 	^(self new)
@@ -29,20 +31,23 @@ DockerHubImage class >> name: aName description: aDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DockerHubImage >> description [
+
 	^ description
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DockerHubImage >> description: anObject [
+
 	description := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DockerHubImage >> initialize [
+
 	super initialize.
-	self 
+	self
 		name: '';
 		description: '';
 		starCount: 0;
@@ -50,54 +55,62 @@ DockerHubImage >> initialize [
 		isAutomated: false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DockerHubImage >> isAutomated [
+
 	^ isAutomated
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DockerHubImage >> isAutomated: anObject [
+
 	isAutomated := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DockerHubImage >> isOfficial [
+
 	^ isOfficial
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DockerHubImage >> isOfficial: anObject [
+
 	isOfficial := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DockerHubImage >> name [
+
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DockerHubImage >> name: anObject [
+
 	name := anObject
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 DockerHubImage >> printOn: aStream [
 
 	aStream nextPutAll: self name asString
 ]
 
-{ #category : #operating }
+{ #category : 'operating' }
 DockerHubImage >> pull [
 
-	^Docker pullImage: self
+	^ Docker pullImage: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DockerHubImage >> starCount [
+
 	^ starCount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DockerHubImage >> starCount: anObject [
+
 	starCount := anObject
 ]

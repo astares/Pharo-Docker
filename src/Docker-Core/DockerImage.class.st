@@ -2,8 +2,8 @@
 I represent a docker image
 "
 Class {
-	#name : #DockerImage,
-	#superclass : #DockerItem,
+	#name : 'DockerImage',
+	#superclass : 'DockerItem',
 	#instVars : [
 		'id',
 		'repository',
@@ -13,86 +13,100 @@ Class {
 		'createdAt',
 		'imageSize'
 	],
-	#category : #'Docker-Core-Base-Model'
+	#category : 'Docker-Core-Base-Model',
+	#package : 'Docker-Core',
+	#tag : 'Base-Model'
 }
 
-{ #category : #'instance creation' }
-DockerImage class >> id: aString [ 
-	self shouldBeImplemented.
+{ #category : 'instance creation' }
+DockerImage class >> id: aString [
+
+	self shouldBeImplemented
 ]
 
-{ #category : #'instance creation' }
-DockerImage class >> id: aString repository: repository tag: tag [ 
-	 ^(self new)
-			id: aString;
-			repository: repository;
-			tag: tag;
-			yourself
+{ #category : 'instance creation' }
+DockerImage class >> id: aString repository: repository tag: tag [
+
+	^ self new
+		  id: aString;
+		  repository: repository;
+		  tag: tag;
+		  yourself
 ]
 
-{ #category : #operating }
+{ #category : 'operating' }
 DockerImage class >> remove [
 
-	 ^Docker remove: self
+	^ Docker remove: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DockerImage >> createdAt [
+
 	^ createdAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DockerImage >> createdAt: anObject [
+
 	createdAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DockerImage >> createdSince [
+
 	^ createdSince
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DockerImage >> createdSince: anObject [
+
 	createdSince := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DockerImage >> digest [
+
 	^ digest
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DockerImage >> digest: anObject [
+
 	digest := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DockerImage >> id [
+
 	^ id
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DockerImage >> id: anObject [
+
 	id := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DockerImage >> imageSize [
+
 	^ imageSize
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DockerImage >> imageSize: anObject [
+
 	imageSize := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 DockerImage >> initialize [
 	super initialize.
 	
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 DockerImage >> printOn: aStream [
 
 	aStream 
@@ -104,22 +118,26 @@ DockerImage >> printOn: aStream [
 		nextPut: $) 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DockerImage >> repository [
+
 	^ repository
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DockerImage >> repository: anObject [
+
 	repository := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DockerImage >> tag [
+
 	^ tag
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DockerImage >> tag: anObject [
+
 	tag := anObject
 ]

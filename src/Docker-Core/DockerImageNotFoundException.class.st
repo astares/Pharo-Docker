@@ -2,15 +2,17 @@
 An exception thrown when a docker image was not found.
 "
 Class {
-	#name : #DockerImageNotFoundException,
-	#superclass : #Error,
+	#name : 'DockerImageNotFoundException',
+	#superclass : 'Error',
 	#instVars : [
 		'imageName'
 	],
-	#category : #'Docker-Core-Errors'
+	#category : 'Docker-Core-Errors',
+	#package : 'Docker-Core',
+	#tag : 'Errors'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 DockerImageNotFoundException class >> imageName: aString [
 
 	^ (self new)
@@ -18,24 +20,24 @@ DockerImageNotFoundException class >> imageName: aString [
 			yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DockerImageNotFoundException >> imageName [
 	^ imageName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DockerImageNotFoundException >> imageName: anObject [
 	imageName := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DockerImageNotFoundException >> messageText [
 	"Overwritten to initialize the message text to a standard text if it has not yet been set"
 	
 	^ messageText ifNil: [ messageText := self standardMessageText ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DockerImageNotFoundException >> standardMessageText [
 	"Generate a standard textual description"
 	

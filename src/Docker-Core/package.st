@@ -1,1 +1,1 @@
-Package { #name : #'Docker-Core' }
+Package { #name : 'Docker-Core' }
