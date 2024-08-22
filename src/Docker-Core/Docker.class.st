@@ -10,6 +10,16 @@ Class {
 }
 
 { #category : 'accessing' }
+Docker class >> localContainers [
+	<sampleInstance>
+	| expression cmd |
+	cmd := 'docker ps --no-trunc --format "DockerContainer id: \?{{.ID}}\? image: \?{{.Image}}\? command: \?{{.Command}}\? created: \?{{.CreatedAt}}\? status: \?{{.Status}}\? ports: \?{{.Ports}}\? names: \?{{.Names}}\?"'.
+	expression := '{',(LibC resultOfCommand: cmd), '}'.
+
+	^ self compiler evaluate: (self sanitizeString: expression)
+]
+
+{ #category : 'accessing' }
 Docker class >> localImageNamed: aString [
 
 	^ self localImages
@@ -19,7 +29,7 @@ Docker class >> localImageNamed: aString [
 
 { #category : 'accessing' }
 Docker class >> localImages [
-
+	<sampleInstance>
 	| expression |
 	expression := '{'
 	              ,

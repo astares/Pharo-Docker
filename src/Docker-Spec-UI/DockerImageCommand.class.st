@@ -1,8 +1,8 @@
 "
-Abstract superclass for launcher commands
+Abstract superclass for all commands related to docker images
 "
 Class {
-	#name : 'DockerLauncherCommand',
+	#name : 'DockerImageCommand',
 	#superclass : 'DockerCommand',
 	#category : 'Docker-Spec-UI-Commands',
 	#package : 'Docker-Spec-UI',
@@ -10,7 +10,7 @@ Class {
 }
 
 { #category : 'testing' }
-DockerLauncherCommand class >> isAbstract [
+DockerImageCommand class >> isAbstract [
 
-	^ self == DockerLauncherCommand
+	^ self == DockerImageCommand
 ]

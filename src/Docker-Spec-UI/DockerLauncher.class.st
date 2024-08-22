@@ -16,8 +16,8 @@ Class {
 DockerLauncher class >> buildToolbarFor: presenter [  
 
 	^ (CmCommandGroup named: 'Toolbar') asSpecGroup
-		  register: (OpenDockerImageBrowserCommand forSpecContext: presenter);
-		 " register: (FBAboutSystemCommand forSpecContext: presenter);				" 	
+  		  register: (OpenDockerImageBrowserCommand forSpecContext: presenter);	
+		  register: (OpenDockerContainerBrowserCommand forSpecContext: presenter);
 		  yourself
 ]
 

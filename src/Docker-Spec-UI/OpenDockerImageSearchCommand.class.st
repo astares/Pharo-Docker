@@ -1,24 +1,27 @@
+"
+Open search 
+"
 Class {
-	#name : 'SearchDockerImageBrowserCommand',
-	#superclass : 'DockerLauncherCommand',
+	#name : 'OpenDockerImageSearchCommand',
+	#superclass : 'DockerCommand',
 	#category : 'Docker-Spec-UI-Commands',
 	#package : 'Docker-Spec-UI',
 	#tag : 'Commands'
 }
 
 { #category : 'executing' }
-SearchDockerImageBrowserCommand >> execute [
+OpenDockerImageSearchCommand >> execute [
 	 DockerImageSearchPresenter new openModal 
 ]
 
 { #category : 'accessing' }
-SearchDockerImageBrowserCommand >> iconName [  
+OpenDockerImageSearchCommand >> iconName [  
 
 	^ #glamorousSearch
 ]
 
 { #category : 'initialization' }
-SearchDockerImageBrowserCommand >> initialize [
+OpenDockerImageSearchCommand >> initialize [
 
 	super initialize.
 	self

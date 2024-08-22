@@ -3,7 +3,7 @@ Open a webbrowser on the given item
 "
 Class {
 	#name : 'BrowseDockerHubImageCommand',
-	#superclass : 'DockerLauncherCommand',
+	#superclass : 'DockerHubImageCommand',
 	#category : 'Docker-Spec-UI-Commands',
 	#package : 'Docker-Spec-UI',
 	#tag : 'Commands'

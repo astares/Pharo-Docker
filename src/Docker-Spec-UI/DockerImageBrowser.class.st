@@ -18,7 +18,7 @@ DockerImageBrowser class >> buildToolbarFor: presenter [
 	^ (CmCommandGroup named: 'Toolbar') asSpecGroup
 		  "register: (AddDockerImageBrowserCommand forSpecContext: presenter);
 		  register: (RemoveDockerImageBrowserCommand forSpecContext: presenter);"
-		  register: (SearchDockerImageBrowserCommand forSpecContext: presenter);		
+		  register: (OpenDockerImageSearchCommand forSpecContext: presenter);		
 		  yourself
 ]
 
@@ -40,7 +40,7 @@ DockerImageBrowser class >> open [
 	self new open
 ]
 
-{ #category : 'initialization' }
+{ #category : 'private - initialization' }
 DockerImageBrowser >> initDockerImageTable [
 
 	imageList := self newTable.

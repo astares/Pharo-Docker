@@ -2,7 +2,7 @@
 Command to open the docker image overview
 "
 Class {
-	#name : 'OpenDockerImageBrowserCommand',
+	#name : 'OpenDockerContainerBrowserCommand',
 	#superclass : 'DockerLauncherCommand',
 	#category : 'Docker-Spec-UI-Commands',
 	#package : 'Docker-Spec-UI',
@@ -10,22 +10,22 @@ Class {
 }
 
 { #category : 'executing' }
-OpenDockerImageBrowserCommand >> execute [
+OpenDockerContainerBrowserCommand >> execute [
 
-	DockerImageBrowser open
+	DockerContainerBrowser open
 ]
 
 { #category : 'accessing' }
-OpenDockerImageBrowserCommand >> iconName [
+OpenDockerContainerBrowserCommand >> iconName [
 
 	^ #page
 ]
 
 { #category : 'initialization' }
-OpenDockerImageBrowserCommand >> initialize [
+OpenDockerContainerBrowserCommand >> initialize [
 
 	super initialize.
 	self
-		name: 'Images';
-		description: 'Open a browser for local docker images.'
+		name: 'Container';
+		description: 'Open a browser for local docker container.'
 ]
