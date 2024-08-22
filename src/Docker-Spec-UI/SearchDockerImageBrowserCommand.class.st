@@ -8,7 +8,7 @@ Class {
 
 { #category : 'executing' }
 SearchDockerImageBrowserCommand >> execute [
-	 
+	 DockerImageSearchPresenter new openModal 
 ]
 
 { #category : 'accessing' }
