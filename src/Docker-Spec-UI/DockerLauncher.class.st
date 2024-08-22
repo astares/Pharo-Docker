@@ -63,7 +63,9 @@ DockerLauncher >> initializePresenters [
 		             visit: self rootCommandsGroup / 'Toolbar';
 		             toolbarPresenter.
 
-	infos := self newText
+	infos := self instantiate: MicrodownPresenter.
+	infos
+		documentFromString: self launcherText
 ]
 
 { #category : 'initialization' }
@@ -71,5 +73,19 @@ DockerLauncher >> initializeWindow: aWindowPresenter [
 
 	aWindowPresenter
 		title: 'Launcher';
-		initialExtent: 500 @ 300
+		initialExtent: 600 @ 425
+]
+
+{ #category : 'initialization' }
+DockerLauncher >> launcherText [
+
+	^ '###Welcome to the Docker Launcher
+		
+This small tool lets you display your local container **images** and **containers** easily but also search for container images on [DockerHub](https://hub.docker.com/)
+
+![Docker](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4E27g9Or59mx-2MiEqEeiW2k8p46qmyJO5g&s)
+
+
+	
+(c) 2024 by T.Bergmann (astares)'
 ]
