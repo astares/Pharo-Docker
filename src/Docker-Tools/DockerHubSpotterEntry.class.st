@@ -17,7 +17,9 @@ DockerHubSpotterEntry >> asString [
 
 { #category : 'evaluating' }
 DockerHubSpotterEntry >> doEvaluate [
-	content inspect
+	| url |
+	url := 'https://hub.docker.com/r/', content name.
+	WebBrowser openOn: url.
 ]
 
 { #category : 'accessing' }
