@@ -91,6 +91,13 @@ DockerHubImage >> name: anObject [
 	name := anObject
 ]
 
+{ #category : 'operating' }
+DockerHubImage >> openInWebbrowser [
+	| url |
+	url := 'https://hub.docker.com/r/', self name.
+	WebBrowser openOn: url.
+]
+
 { #category : 'printing' }
 DockerHubImage >> printOn: aStream [
 

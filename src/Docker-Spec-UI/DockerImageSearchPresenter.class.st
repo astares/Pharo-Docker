@@ -14,6 +14,14 @@ Class {
 	#tag : 'Base'
 }
 
+{ #category : 'commands' }
+DockerImageSearchPresenter class >> buildCommandsGroupWith: presenterIntance forRoot: rootCommandGroup [
+
+	rootCommandGroup register:
+		((CmCommandGroup named: 'result commands') asSpecGroup 
+			register: (BrowseDockerHubImageCommand forSpecContext: presenterIntance))
+]
+
 { #category : 'layout' }
 DockerImageSearchPresenter >> defaultLayout [
 
@@ -43,7 +51,9 @@ DockerImageSearchPresenter >> initDockerImageRegistryTable [
 		addColumn: (SpStringTableColumn title: 'Stars' evaluated: #starCount);
 		addColumn: (SpStringTableColumn title: 'Official' evaluated: #isOfficial);
 		addColumn: (SpStringTableColumn title: 'Automated' evaluated: #isAutomated).
- 
+	
+	resultList	
+		contextMenu: [ (self rootCommandsGroup / 'result commands') beRoot asMenuPresenter	]
 ]
 
 { #category : 'initialization' }
@@ -78,4 +88,9 @@ DockerImageSearchPresenter >> search [
 		ifEmpty: [ resultList items: #(  ) ]
 		ifNotEmpty: [ :text |
 		resultList items: (Docker searchDockerHubFor: text) ]
+]
+
+{ #category : 'information' }
+DockerImageSearchPresenter >> selectedResult [
+	^ resultList selectedItem
 ]

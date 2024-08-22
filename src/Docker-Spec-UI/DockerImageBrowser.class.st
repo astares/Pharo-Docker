@@ -16,8 +16,8 @@ Class {
 DockerImageBrowser class >> buildToolbarFor: presenter [  
 
 	^ (CmCommandGroup named: 'Toolbar') asSpecGroup
-		  register: (AddDockerImageBrowserCommand forSpecContext: presenter);
-		  register: (RemoveDockerImageBrowserCommand forSpecContext: presenter);
+		  "register: (AddDockerImageBrowserCommand forSpecContext: presenter);
+		  register: (RemoveDockerImageBrowserCommand forSpecContext: presenter);"
 		  register: (SearchDockerImageBrowserCommand forSpecContext: presenter);		
 		  yourself
 ]
