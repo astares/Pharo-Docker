@@ -1,1 +1,1 @@
-Package { #name : #BaselineOfDocker }
+Package { #name : 'BaselineOfDocker' }
