@@ -82,10 +82,10 @@ Docker class >> sanitizeString: aString [
 Docker class >> searchDockerHubFor: searchString [
 
 	| expression cmd coll |
-	cmd := 'docker search --format "#(?{{.Name}}? ?{{.Description}}? ?{{.StarCount}}? ?{{.IsOfficial}}? ?{{.IsAutomated}}?)." '
+	cmd := 'docker search --no-trunc --format "#(''{{.Name}}'' ''{{.Description}}'' ''{{.StarCount}}'' ''{{.IsOfficial}}'' ''{{.IsAutomated}}'')." '
 	       , searchString.
 	expression := '{' , (LibC resultOfCommand: cmd) , '}'.
-	coll := self compiler evaluate: (self sanitizeString: expression).
+	coll := self compiler evaluate:  expression.
 	^ coll collect: [ :each |
 		  (DockerHubImage name: each first description: each second)
 			  starCount: each third;

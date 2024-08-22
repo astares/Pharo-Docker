@@ -3,7 +3,7 @@ Docker tooling - launcher
 "
 Class {
 	#name : 'DockerLauncher',
-	#superclass : 'DockerPresenter',
+	#superclass : 'DockerBrowserPresenter',
 	#instVars : [
 		'infos'
 	],

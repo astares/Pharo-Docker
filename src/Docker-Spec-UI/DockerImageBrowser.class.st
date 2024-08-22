@@ -3,7 +3,7 @@ A docker image browser
 "
 Class {
 	#name : 'DockerImageBrowser',
-	#superclass : 'DockerPresenter',
+	#superclass : 'DockerBrowserPresenter',
 	#instVars : [
 		'imageList'
 	],
@@ -18,6 +18,7 @@ DockerImageBrowser class >> buildToolbarFor: presenter [
 	^ (CmCommandGroup named: 'Toolbar') asSpecGroup
 		  register: (AddDockerImageBrowserCommand forSpecContext: presenter);
 		  register: (RemoveDockerImageBrowserCommand forSpecContext: presenter);
+		  register: (SearchDockerImageBrowserCommand forSpecContext: presenter);		
 		  yourself
 ]
 
@@ -43,6 +44,8 @@ DockerImageBrowser class >> open [
 DockerImageBrowser >> initDockerImageTable [
 
 	imageList := self newTable.
+	imageList showColumnHeaders;
+		 		 beResizable.
 	imageList
 		addColumn: (SpStringTableColumn title: 'Repository' evaluated: #repository);
 		addColumn: (SpStringTableColumn title: 'Tag' evaluated: #tag);
