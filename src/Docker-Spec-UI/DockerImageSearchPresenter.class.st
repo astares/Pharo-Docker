@@ -49,6 +49,7 @@ DockerImageSearchPresenter >> initDockerImageRegistryTable [
 { #category : 'initialization' }
 DockerImageSearchPresenter >> initializePresenters [
 	searchText := self newTextInput.
+	searchText whenSubmitDo: [:text | self search ].
 
 	searchButton := self newButton
 		help: 'Search for the image';
