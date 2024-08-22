@@ -39,6 +39,23 @@ DockerLauncher class >> open [
 	self new open
 ]
 
+{ #category : 'layout' }
+DockerLauncher class >> worldMenuOn: aBuilder [
+	<worldMenu>
+	(aBuilder item: #Astares)
+		order: 10.
+	
+	(aBuilder item: #Docker)
+		parent: #Astares.
+		
+	(aBuilder item: #DockerLauncher)
+		parent: #Docker;
+		label: 'Docker Launcher';
+		order: 70;
+		help: 'Docker related tooling';
+		action: [ self open ]
+]
+
 { #category : 'initialization' }
 DockerLauncher >> initializePresenters [
 

@@ -74,6 +74,6 @@ DockerImageBrowser >> initializeWindow: aWindowPresenter [
 
 	aWindowPresenter
 		title: 'Docker images';
-		initialExtent: 500 @ 300;
+		initialExtent: 800 @ 600;
 		statusBar: statusBar
 ]

@@ -1,3 +1,6 @@
+"
+A presenter allowing to search for docker container images
+"
 Class {
 	#name : 'DockerImageSearchPresenter',
 	#superclass : 'DockerPresenter',
@@ -28,7 +31,7 @@ DockerImageSearchPresenter >> defaultLayout [
 		 
 ]
 
-{ #category : 'initialization' }
+{ #category : 'private - initialization' }
 DockerImageSearchPresenter >> initDockerImageRegistryTable [
 
 	resultList := self newTable.
@@ -46,6 +49,7 @@ DockerImageSearchPresenter >> initDockerImageRegistryTable [
 { #category : 'initialization' }
 DockerImageSearchPresenter >> initializePresenters [
 	searchText := self newTextInput.
+
 	searchButton := self newButton
 		help: 'Search for the image';
 		label: 'Search';
@@ -54,6 +58,16 @@ DockerImageSearchPresenter >> initializePresenters [
 		yourself.
 		
 	self initDockerImageRegistryTable	
+]
+
+{ #category : 'initialization' }
+DockerImageSearchPresenter >> initializeWindow: aWindowPresenter [
+
+	aWindowPresenter
+		title: 'Search container images';
+		initialExtent: 700 @ 600.
+		
+	aWindowPresenter whenOpenedDo: [ searchText takeKeyboardFocus ]	
 ]
 
 { #category : 'actions' }
