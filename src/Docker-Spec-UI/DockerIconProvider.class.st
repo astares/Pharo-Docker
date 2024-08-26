@@ -67,6 +67,15 @@ DockerIconProvider class >> iconNamed: aName [
 	^ self icons at: aName ifAbsentPut: [ self iconFor: aName ]
 ]
 
+{ #category : 'accessing' }
+DockerIconProvider class >> iconNamed: aName ifAbsent: aBlock [
+
+	(aName isNil or: [ (self respondsTo: aName , self iconPrefix) not ])
+		  ifTrue: [ ^ aBlock value ].
+		
+	^ self iconNamed: aName
+]
+
 { #category : 'private - defaults' }
 DockerIconProvider class >> iconPrefix [
 
