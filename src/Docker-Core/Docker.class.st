@@ -13,7 +13,7 @@ Class {
 Docker class >> localContainers [
 	<sampleInstance>
 	| expression cmd |
-	cmd := 'docker ps --no-trunc --format "DockerContainer id: \?{{.ID}}\? image: \?{{.Image}}\? command: \?{{.Command}}\? created: \?{{.CreatedAt}}\? status: \?{{.Status}}\? ports: \?{{.Ports}}\? names: \?{{.Names}}\?"'.
+	cmd := 'docker ps --no-trunc --format "DockerContainer id: \?{{.ID}}\? image: \?{{.Image}}\? command: \?{{.Command}}\? created: \?{{.CreatedAt}}\? status: \?{{.Status}}\? ports: \?{{.Ports}}\? names: \?{{.Names}}\?. "'.
 	expression := '{',(LibC resultOfCommand: cmd), '}'.
 
 	^ self compiler evaluate: (self sanitizeString: expression)

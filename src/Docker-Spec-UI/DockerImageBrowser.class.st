@@ -7,9 +7,9 @@ Class {
 	#instVars : [
 		'imageList'
 	],
-	#category : 'Docker-Spec-UI-Base',
+	#category : 'Docker-Spec-UI-Browser',
 	#package : 'Docker-Spec-UI',
-	#tag : 'Base'
+	#tag : 'Browser'
 }
 
 { #category : 'building' }
@@ -61,7 +61,7 @@ DockerImageBrowser >> initDockerImageTable [
 					 self application iconProvider iconNamed: #docker ];
 				 yourself);
 		addColumn: (SpStringTableColumn new
-				 title: 'Repository';
+				 title: 'REPOSITORY';
 				 evaluated: #repository;
 				 width: 170;
 				 beSortable;
@@ -73,19 +73,19 @@ DockerImageBrowser >> initDockerImageTable [
 				 beSortable;
 				 yourself);
 		addColumn: (SpStringTableColumn new
-				 title: 'Image ID';
+				 title: 'IMAGE ID';
 				 evaluated: #id;
 				 width: 110;
 				 beSortable;
 				 yourself);
 		addColumn: (SpStringTableColumn new
-				 title: 'Created';
+				 title: 'CREATED';
 				 evaluated: #createdAt;
 				 width: 190;
 				 beSortable;
 				 yourself);
 		addColumn: (SpStringTableColumn new
-				 title: 'Size';
+				 title: 'SIZE';
 				 evaluated: #imageSize;
 				 width: 80;
 				 beSortable;
@@ -114,7 +114,7 @@ DockerImageBrowser >> initializeWindow: aWindowPresenter [
 
 	aWindowPresenter
 		title: 'Docker images';
-		initialExtent: 800 @ 600;		
+		initialExtent: 800 @ 300;		
 		statusBar: statusBar.
 		
 	self setWindowIconTo: aWindowPresenter

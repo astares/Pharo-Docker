@@ -7,9 +7,9 @@ Class {
 	#instVars : [
 		'containerList'
 	],
-	#category : 'Docker-Spec-UI-Base',
+	#category : 'Docker-Spec-UI-Browser',
 	#package : 'Docker-Spec-UI',
-	#tag : 'Base'
+	#tag : 'Browser'
 }
 
 { #category : 'building' }
@@ -17,14 +17,14 @@ DockerContainerBrowser class >> buildCommandsGroupWith: presenterIntance forRoot
 	super buildCommandsGroupWith: presenterIntance forRoot: rootCommandGroup.
 	rootCommandGroup register:
 		((CmCommandGroup named: 'container commands') asSpecGroup 
-			register: (RemoveDockerContainerCommand forSpecContext: presenterIntance))
+			register: (StopDockerContainerCommand forSpecContext: presenterIntance))
 ]
 
 { #category : 'building' }
 DockerContainerBrowser class >> buildToolbarFor: presenter [  
 
 	^ (CmCommandGroup named: 'Toolbar') asSpecGroup	 
-		  register: (RemoveDockerContainerCommand forSpecContext: presenter);		
+		  register: (StopDockerContainerCommand forSpecContext: presenter);		
 		  yourself
 ]
 
@@ -91,7 +91,7 @@ DockerContainerBrowser >> initializeWindow: aWindowPresenter [
 
 	aWindowPresenter
 		title: 'Docker container';
-		initialExtent: 800 @ 600;
+		initialExtent: 800 @ 300;
 		statusBar: statusBar
 ]
 
