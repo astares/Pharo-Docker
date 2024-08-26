@@ -35,7 +35,7 @@ DockerApplication class >> start [
 
 { #category : 'private - factory' }
 DockerApplication >> newIconProvider [
-
+ 
 	^ SpPharoThemeIconProvider new, DockerIconProvider
 ]
 

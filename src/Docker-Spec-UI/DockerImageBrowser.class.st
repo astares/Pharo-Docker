@@ -42,11 +42,20 @@ DockerImageBrowser class >> open [
 
 { #category : 'private - initialization' }
 DockerImageBrowser >> initDockerImageTable [
-
+ 
 	imageList := self newTable.
 	imageList showColumnHeaders;
 		 		 beResizable.
 	imageList
+		addColumn: (SpImageTableColumn new 
+			width: 20;
+			evaluated: [ :each | self application iconProvider iconNamed: #docker ];
+			"evaluated: [ :each | self application iconProvider iconNamed: #container ];"
+			
+			
+			
+			yourself);
+	
 		addColumn: (SpStringTableColumn title: 'Repository' evaluated: #repository);
 		addColumn: (SpStringTableColumn title: 'Tag' evaluated: #tag);
 		addColumn: (SpStringTableColumn title: 'Imge ID' evaluated: #id);
