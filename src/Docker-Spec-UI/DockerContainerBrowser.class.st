@@ -13,6 +13,14 @@ Class {
 }
 
 { #category : 'building' }
+DockerContainerBrowser class >> buildCommandsGroupWith: presenterIntance forRoot: rootCommandGroup [
+	super buildCommandsGroupWith: presenterIntance forRoot: rootCommandGroup.
+	rootCommandGroup register:
+		((CmCommandGroup named: 'container commands') asSpecGroup 
+			register: (RemoveDockerContainerCommand forSpecContext: presenterIntance))
+]
+
+{ #category : 'building' }
 DockerContainerBrowser class >> buildToolbarFor: presenter [  
 
 	^ (CmCommandGroup named: 'Toolbar') asSpecGroup	 
@@ -44,7 +52,13 @@ DockerContainerBrowser >> initDockerContainerTable [
 	containerList := self newTable.
 	containerList showColumnHeaders;
 		 		 beResizable.
+				
 	containerList
+		addColumn: (SpImageTableColumn new
+				 width: 20;
+				 evaluated: [ :each |
+					 self application iconProvider iconNamed: #container ];
+				 yourself);
 		addColumn: (SpStringTableColumn title: 'ID' evaluated: #shortID);
 		addColumn: (SpStringTableColumn title: 'IMAGE' evaluated: #image);
 		addColumn: (SpStringTableColumn title: 'COMMAND' evaluated: #command);
@@ -52,6 +66,9 @@ DockerContainerBrowser >> initDockerContainerTable [
 		addColumn: (SpStringTableColumn title: 'STATUS' evaluated: #status);
 		addColumn: (SpStringTableColumn title: 'PORTS' evaluated: #ports);
 		addColumn: (SpStringTableColumn title: 'NAMES' evaluated: #names).
+
+	containerList 
+		contextMenu: [ (self rootCommandsGroup / 'container commands') beRoot asMenuPresenter	].
 		
 	containerList items: Docker localContainers
 ]
@@ -76,4 +93,10 @@ DockerContainerBrowser >> initializeWindow: aWindowPresenter [
 		title: 'Docker container';
 		initialExtent: 800 @ 600;
 		statusBar: statusBar
+]
+
+{ #category : 'private - accessing' }
+DockerContainerBrowser >> selectedContainer [
+
+	^ containerList selectedItem
 ]

@@ -33,6 +33,24 @@ DockerApplication class >> start [
 	self current run
 ]
 
+{ #category : 'world menu' }
+DockerApplication class >> worldMenuOn: aBuilder [
+	<worldMenu>
+	(aBuilder item: #Astares)
+		order: 10.
+	
+	(aBuilder item: #Docker)
+		icon: (DockerIconProvider iconNamed: #docker);
+		parent: #Astares.
+		
+	(aBuilder item: #DockerLauncher)
+		parent: #Docker;
+		label: 'Docker Launcher';
+		order: 70;
+		help: 'Docker related tooling';
+		action: [ self start ]
+]
+
 { #category : 'private - factory' }
 DockerApplication >> newIconProvider [
  

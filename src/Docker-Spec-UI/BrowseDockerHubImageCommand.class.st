@@ -17,7 +17,7 @@ BrowseDockerHubImageCommand >> execute [
 { #category : 'accessing' }
 BrowseDockerHubImageCommand >> iconName [  
 
-	^ #browse
+	^ #glamorousBrowse
 ]
 
 { #category : 'initialization' }

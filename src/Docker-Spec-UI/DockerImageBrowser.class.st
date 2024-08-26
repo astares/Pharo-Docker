@@ -13,11 +13,18 @@ Class {
 }
 
 { #category : 'building' }
+DockerImageBrowser class >> buildCommandsGroupWith: presenterIntance forRoot: rootCommandGroup [
+	super buildCommandsGroupWith: presenterIntance forRoot: rootCommandGroup.
+	rootCommandGroup register:
+		((CmCommandGroup named: 'image commands') asSpecGroup 
+			register: (RunImageAsContainerCommand forSpecContext: presenterIntance))
+]
+
+{ #category : 'building' }
 DockerImageBrowser class >> buildToolbarFor: presenter [  
 
 	^ (CmCommandGroup named: 'Toolbar') asSpecGroup
-		  "register: (AddDockerImageBrowserCommand forSpecContext: presenter);
-		  register: (RemoveDockerImageBrowserCommand forSpecContext: presenter);"
+ 
 		  register: (OpenDockerImageSearchCommand forSpecContext: presenter);		
 		  yourself
 ]
@@ -83,6 +90,8 @@ DockerImageBrowser >> initDockerImageTable [
 				 width: 80;
 				 beSortable;
 				 yourself).
+	imageList 
+		contextMenu: [ (self rootCommandsGroup / 'image commands') beRoot asMenuPresenter	].
 
 	imageList items: Docker localImages
 ]
@@ -109,6 +118,11 @@ DockerImageBrowser >> initializeWindow: aWindowPresenter [
 		statusBar: statusBar.
 		
 	self setWindowIconTo: aWindowPresenter
+]
+
+{ #category : 'private - accessing' }
+DockerImageBrowser >> selectedImage [
+	^ imageList selectedItem
 ]
 
 { #category : 'private - initialization' }
