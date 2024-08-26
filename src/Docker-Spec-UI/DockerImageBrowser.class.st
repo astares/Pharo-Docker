@@ -42,26 +42,48 @@ DockerImageBrowser class >> open [
 
 { #category : 'private - initialization' }
 DockerImageBrowser >> initDockerImageTable [
- 
+
 	imageList := self newTable.
-	imageList showColumnHeaders;
-		 		 beResizable.
 	imageList
-		addColumn: (SpImageTableColumn new 
-			width: 20;
-			evaluated: [ :each | self application iconProvider iconNamed: #docker ];
-			"evaluated: [ :each | self application iconProvider iconNamed: #container ];"
-			
-			
-			
-			yourself);
-	
-		addColumn: (SpStringTableColumn title: 'Repository' evaluated: #repository);
-		addColumn: (SpStringTableColumn title: 'Tag' evaluated: #tag);
-		addColumn: (SpStringTableColumn title: 'Imge ID' evaluated: #id);
-		addColumn: (SpStringTableColumn title: 'Created' evaluated: #createdAt);
-		addColumn: (SpStringTableColumn title: 'Size' evaluated: #imageSize).
-		
+		showColumnHeaders;
+		beResizable.
+	imageList
+		addColumn: (SpImageTableColumn new
+				 width: 20;
+				 evaluated: [ :each |
+					 self application iconProvider iconNamed: #docker ];
+				 yourself);
+		addColumn: (SpStringTableColumn new
+				 title: 'Repository';
+				 evaluated: #repository;
+				 width: 170;
+				 beSortable;
+				 yourself);
+		addColumn: (SpStringTableColumn new
+				 title: 'Tag';
+				 evaluated: #tag;
+				 width: 50;
+				 beSortable;
+				 yourself);
+		addColumn: (SpStringTableColumn new
+				 title: 'Image ID';
+				 evaluated: #id;
+				 width: 110;
+				 beSortable;
+				 yourself);
+		addColumn: (SpStringTableColumn new
+				 title: 'Created';
+				 evaluated: #createdAt;
+				 width: 190;
+				 beSortable;
+				 yourself);
+		addColumn: (SpStringTableColumn new
+				 title: 'Size';
+				 evaluated: #imageSize;
+				 width: 80;
+				 beSortable;
+				 yourself).
+
 	imageList items: Docker localImages
 ]
 
@@ -83,6 +105,15 @@ DockerImageBrowser >> initializeWindow: aWindowPresenter [
 
 	aWindowPresenter
 		title: 'Docker images';
-		initialExtent: 800 @ 600;
-		statusBar: statusBar
+		initialExtent: 800 @ 600;		
+		statusBar: statusBar.
+		
+	self setWindowIconTo: aWindowPresenter
+]
+
+{ #category : 'private - initialization' }
+DockerImageBrowser >> setWindowIconTo: aSpWindowPresenter [
+	
+	aSpWindowPresenter	windowIcon: (self iconNamed: #docker).
+
 ]

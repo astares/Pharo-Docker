@@ -24,5 +24,11 @@ DockerHubSpotterEntry >> doEvaluate [
 { #category : 'accessing' }
 DockerHubSpotterEntry >> iconName [
 
-	^ #add
+	^ #docker
+]
+
+{ #category : 'accessing' }
+DockerHubSpotterEntry >> iconOn: anIconProvider [
+
+	^ (DockerIconProvider iconNamed: #docker)
 ]
