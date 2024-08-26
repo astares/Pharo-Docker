@@ -17,7 +17,7 @@ StopDockerContainerCommand >> canBeExecuted [
 
 { #category : 'executing' }
 StopDockerContainerCommand >> execute [
-	self context selectedContainer ifNotNil: [:item | self stopContainer: item ]
+	self context selectedContainer ifNotNil: [:item | self stopContainer: item. self context updateContainerList ]
 ]
 
 { #category : 'accessing' }

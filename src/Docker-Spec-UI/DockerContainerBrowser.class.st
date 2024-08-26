@@ -70,7 +70,7 @@ DockerContainerBrowser >> initDockerContainerTable [
 	containerList 
 		contextMenu: [ (self rootCommandsGroup / 'container commands') beRoot asMenuPresenter	].
 		
-	containerList items: Docker localContainers
+	self updateContainerList
 ]
 
 { #category : 'initialization' }
@@ -99,4 +99,10 @@ DockerContainerBrowser >> initializeWindow: aWindowPresenter [
 DockerContainerBrowser >> selectedContainer [
 
 	^ containerList selectedItem
+]
+
+{ #category : 'private - initialization' }
+DockerContainerBrowser >> updateContainerList [
+
+	containerList items: Docker localContainers
 ]
