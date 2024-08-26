@@ -19,6 +19,7 @@ DockerCommand class >> isAbstract [
 DockerCommand >> asSpecCommand [
 
 	^ super asSpecCommand
+		  iconProvider: self iconProvider;
 		  iconName: self iconName;
 		  yourself
 ]
@@ -27,4 +28,16 @@ DockerCommand >> asSpecCommand [
 DockerCommand >> iconName [  
 
 	^ self subclassResponsibility
+]
+
+{ #category : 'accessing' }
+DockerCommand >> iconName: aSymbol [ 
+
+	^  self iconProvider iconNamed: aSymbol
+]
+
+{ #category : 'accessing' }
+DockerCommand >> iconProvider [
+
+	^ DockerApplication current iconProvider
 ]

@@ -1,8 +1,11 @@
+"
+An icon provider
+"
 Class {
 	#name : 'DockerIconProvider',
-	#superclass : 'SpPharoThemeIconProvider',
-	#classInstVars : [
-		'icons'
+	#superclass : 'Object',
+	#classVars : [
+		'IconCache'
 	],
 	#category : 'Docker-Spec-UI-Utilities',
 	#package : 'Docker-Spec-UI',
@@ -49,14 +52,19 @@ DockerIconProvider class >> generateIcon [
 	self class compile: contentsMethod classified: #'icons'	 
 ]
 
+{ #category : 'private - accessing' }
+DockerIconProvider class >> iconFor: aSymbol [ 
+
+	| encoded |
+	encoded := self perform: (aSymbol, self iconPrefix) asSymbol.
+	^ Form fromBinaryStream:
+		  encoded base64Decoded asByteArray readStream
+]
+
 { #category : 'accessing' }
-DockerIconProvider class >> iconNamed: aName ifAbsent: aBlock [ 
-	"Answer a <Form> representing an icon named aName. Execute aBlock if not found"
+DockerIconProvider class >> iconNamed: aName [  
 
-	(aName isNil or: [ (self class respondsTo: aName) not ])
-		ifTrue: [ ^ aBlock value ].
-
-	 ^ self class perform: aName
+	^ self icons at: aName ifAbsentPut: [ self iconFor: aName ]
 ]
 
 { #category : 'private - defaults' }
@@ -65,9 +73,11 @@ DockerIconProvider class >> iconPrefix [
 	^ 'IconContents'
 ]
 
-{ #category : 'accessing' }
+{ #category : 'private - accessing' }
 DockerIconProvider class >> icons [  
-	^ icons ifNil: [ icons := Dictionary new ]
+	<script: 'self icons inspect'>
+	
+	^ IconCache ifNil: [ IconCache := Dictionary new ]
 ]
 
 { #category : 'inspecting' }
@@ -77,14 +87,13 @@ DockerIconProvider class >> inspectionIcons [
 	^ SpTablePresenter new
 		  addColumn: (SpImageTableColumn title: 'Icon' evaluated: #value);
 		  addColumn: (SpStringTableColumn title: 'Name' evaluated: #key);
-		  items:
-			  ((self class selectorsInProtocol: 'accessing - icons') sorted
-				   collect: [ :each | each -> (self perform: each) ]);
+		  items: self icons associations;
 		  yourself
 ]
 
 { #category : 'initialization' }
 DockerIconProvider class >> resetIcons [  
 	<script>
-	^ icons := nil
+
+	^ IconCache := nil
 ]

@@ -18,7 +18,7 @@ OpenDockerContainerBrowserCommand >> execute [
 { #category : 'accessing' }
 OpenDockerContainerBrowserCommand >> iconName [
 
-	^ #page
+	^ #container
 ]
 
 { #category : 'initialization' }

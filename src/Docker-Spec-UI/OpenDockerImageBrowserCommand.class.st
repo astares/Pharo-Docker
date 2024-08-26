@@ -18,7 +18,7 @@ OpenDockerImageBrowserCommand >> execute [
 { #category : 'accessing' }
 OpenDockerImageBrowserCommand >> iconName [
 
-	^ #page
+	^ #docker
 ]
 
 { #category : 'initialization' }
