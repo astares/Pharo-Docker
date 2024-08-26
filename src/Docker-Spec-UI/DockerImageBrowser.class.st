@@ -17,7 +17,7 @@ DockerImageBrowser class >> buildCommandsGroupWith: presenterIntance forRoot: ro
 	super buildCommandsGroupWith: presenterIntance forRoot: rootCommandGroup.
 	rootCommandGroup register:
 		((CmCommandGroup named: 'image commands') asSpecGroup 
-			register: (RunImageAsContainerCommand forSpecContext: presenterIntance))
+			register: (RunDockerImageAsContainerCommand forSpecContext: presenterIntance))
 ]
 
 { #category : 'building' }

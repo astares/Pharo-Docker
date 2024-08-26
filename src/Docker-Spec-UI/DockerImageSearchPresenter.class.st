@@ -19,7 +19,8 @@ DockerImageSearchPresenter class >> buildCommandsGroupWith: presenterIntance for
 
 	rootCommandGroup register:
 		((CmCommandGroup named: 'result commands') asSpecGroup 
-			register: (BrowseDockerHubImageCommand forSpecContext: presenterIntance))
+			register: (BrowseDockerHubImageCommand forSpecContext: presenterIntance);
+			register: (PullDockerImageCommand forSpecContext: presenterIntance))
 ]
 
 { #category : 'layout' }
@@ -46,7 +47,18 @@ DockerImageSearchPresenter >> initDockerImageRegistryTable [
 	resultList showColumnHeaders;
 		 		 beResizable.
 	resultList
-		addColumn: (SpStringTableColumn title: 'NAME' evaluated: #name);
+		addColumn: (SpImageTableColumn new
+				 width: 20;
+				 evaluated: [ :each |
+					 self application iconProvider iconNamed: #container ];
+				 yourself);
+		addColumn: (SpStringTableColumn new
+				 title: 'NAME';
+				 evaluated: #name;
+				 width: 80;
+				 beSortable;
+				 yourself);				
+		
 		addColumn: (SpStringTableColumn title: 'Description' evaluated: #description);
 		addColumn: (SpStringTableColumn title: 'Stars' evaluated: #starCount);
 		addColumn: (SpStringTableColumn title: 'Official' evaluated: #isOfficial);

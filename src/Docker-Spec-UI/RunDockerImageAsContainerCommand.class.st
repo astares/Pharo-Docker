@@ -2,26 +2,26 @@
 Ru the image as a container
 "
 Class {
-	#name : 'RunImageAsContainerCommand',
-	#superclass : 'DockerHubImageCommand',
+	#name : 'RunDockerImageAsContainerCommand',
+	#superclass : 'DockerImageCommand',
 	#category : 'Docker-Spec-UI-Commands',
 	#package : 'Docker-Spec-UI',
 	#tag : 'Commands'
 }
 
 { #category : 'executing' }
-RunImageAsContainerCommand >> execute [
+RunDockerImageAsContainerCommand >> execute [
 	self context selectedImage ifNotNil: [:item | self runImageAsContainer: item ]
 ]
 
 { #category : 'accessing' }
-RunImageAsContainerCommand >> iconName [  
+RunDockerImageAsContainerCommand >> iconName [  
 
 	^ #glamorousGo
 ]
 
 { #category : 'initialization' }
-RunImageAsContainerCommand >> initialize [
+RunDockerImageAsContainerCommand >> initialize [
 
 	super initialize.
 	self
@@ -30,7 +30,7 @@ RunImageAsContainerCommand >> initialize [
 ]
 
 { #category : 'operating' }
-RunImageAsContainerCommand >> runImageAsContainer: aDockerImage [ 
+RunDockerImageAsContainerCommand >> runImageAsContainer: aDockerImage [ 
 	
 	LibC system: 'docker run -d ', aDockerImage repository 
 ]

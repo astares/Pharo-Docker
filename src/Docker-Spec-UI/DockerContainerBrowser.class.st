@@ -59,10 +59,30 @@ DockerContainerBrowser >> initDockerContainerTable [
 				 evaluated: [ :each |
 					 self application iconProvider iconNamed: #container ];
 				 yourself);
-		addColumn: (SpStringTableColumn title: 'ID' evaluated: #shortID);
-		addColumn: (SpStringTableColumn title: 'IMAGE' evaluated: #image);
-		addColumn: (SpStringTableColumn title: 'COMMAND' evaluated: #command);
-		addColumn: (SpStringTableColumn title: 'CREATED' evaluated: #created);
+		addColumn: (SpStringTableColumn new
+				 title: 'ID';
+				 evaluated: #shortID;
+				 width: 80;
+				 beSortable;
+				 yourself);				
+		addColumn: (SpStringTableColumn new
+				 title: 'IMAGE';
+				 evaluated: #image;
+				 width: 170;
+				 beSortable;
+				 yourself);				
+		addColumn: (SpStringTableColumn new
+				 title: 'COMMAND';
+				 evaluated: #command;
+				 width: 80;
+				 beSortable;
+				 yourself);	
+		addColumn: (SpStringTableColumn new
+				 title: 'CREATED';
+				 evaluated: #created;
+				 width: 180;
+				 beSortable;
+				 yourself);								 		 
 		addColumn: (SpStringTableColumn title: 'STATUS' evaluated: #status);
 		addColumn: (SpStringTableColumn title: 'PORTS' evaluated: #ports);
 		addColumn: (SpStringTableColumn title: 'NAMES' evaluated: #names).
