@@ -10,6 +10,8 @@ the spotter browser extension to easily work with remote or local docker images 
 
 ### Screenshot
 
+![](images/docker2.png)
+
 ![](images/docker.png)
 
 ## Installation
